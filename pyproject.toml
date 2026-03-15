@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "test-report-gen"
+version = "0.1.0"
+description = "Generates rich, interactive HTML reports from test data"
+readme = "README.md"
+authors = [
+    {name = "gbvk312"}
+]
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+]
+dependencies = [
+    "jinja2>=3.0",
+    "pandas>=1.5"
+]
+
+[project.entry-points."ttt.plugins"]
+report-generator = "report_gen_plugin:ReportGenPlugin"
+
+[tool.setuptools.py-modules]
+modules = ["report_gen_plugin"]
+
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+ignore_missing_imports = true
